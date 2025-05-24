@@ -2,7 +2,6 @@ import userEvent from "@testing-library/user-event";
 import MatchResultPage from "@/app/match/history/[matchId]/page";
 import { appRender, act, screen } from "@/testing/testUtils";
 import { testData } from "@/testing/testData";
-import { useMatch } from "@/features/match";
 
 const router = {
   push: jest.fn(),
