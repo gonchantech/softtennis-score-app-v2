@@ -1,0 +1,73 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* バリアント */
+.primary {
+  color: #2563eb;
+}
+
+.primary:hover {
+  color: #1d4ed8;
+}
+
+.secondary {
+  color: #4b5563;
+}
+
+.secondary:hover {
+  color: #374151;
+}
+
+.success {
+  color: #16a34a;
+}
+
+.success:hover {
+  color: #15803d;
+}
+
+.danger {
+  color: #dc2626;
+}
+
+.danger:hover {
+  color: #b91c1c;
+}
+
+/* サイズ */
+.small {
+  font-size: 0.875rem;
+}
+
+.medium {
+  font-size: 1rem;
+}
+
+.large {
+  font-size: 1.125rem;
+}
+
+/* 無効化状態 */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* アイコン */
+.iconLeft {
+  margin-right: 0.5rem;
+}
+
+.iconRight {
+  margin-left: 0.5rem;
+}

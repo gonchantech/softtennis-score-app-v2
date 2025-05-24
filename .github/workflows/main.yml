@@ -1,0 +1,37 @@
+name: CI/CD
+on:
+  - push
+jobs:
+  code-checks:
+    name: Code Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: mv .env.example .env
+      - run: npm install
+      - run: npm run test
+      - run: npm run lint
+      - run: npm run types:check
+
+  deploy:
+    name: Deploy To Vercel
+    runs-on: ubuntu-latest
+    needs: [code-checks]
+    if: github.repository_owner == 'gonchantech'
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: start deployment
+        uses: bobheadxi/deployments@v1
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: ${{ fromJSON('["Production", "Preview"]')[github.ref != 'refs/heads/main'] }}
+      - uses: actions/checkout@v4
+      - run: mv .env.example .env
+      - run: npm i -g vercel
+      - run: vercel deploy --prod --token ${{ secrets.VERCEL_TOKEN }}
